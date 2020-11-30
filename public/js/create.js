@@ -5,7 +5,7 @@ const form = document.querySelectorAll(".create-form");
         const formData = new FormData(form);
         const name = formData.get("name");
         const body = {name};
-        await fetch("http://localhost:8080/tasks", {
+        await fetch("http://localhost:8080/tweets", {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
