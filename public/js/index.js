@@ -1,20 +1,20 @@
 console.log("Hello from index.js!");
 document.addEventListener("DOMContentLoaded", async () => {
     try{
-        const res = await fetch("http://localhost:8080/tweets");
-        const { tweets } = await res.json();
+        const res = await fetch("http://localhost:8080/tasks");
+        const { tasks } = await res.json();
 
-        const tweetsContainer = document.querySelector("#tweets-container");
-        const tweetsHtml = tweets.map(
-            ({ message }) => `
+        const tasksContainer = document.querySelector("#tasks-container");
+        const tasksHtml = await tasks.map(
+            ({ name }) => `
             <div class="card">
               <div class="card-body">
-                <p class="card-text">${message}</p>
+                <p class="card-text">${name}</p>
               </div>
             </div>
           `
           );
-          tweetsContainer.innerHTML = tweetsHtml.join("");
+          tasksContainer.innerHTML = tasksHtml.join("");
     }catch(err) {
         console.error(err);
     }
